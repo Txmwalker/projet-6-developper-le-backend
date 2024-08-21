@@ -33,6 +33,6 @@ app.use("/api/auth",userRoute)
 
 app.use("/api/books",bookRoute)
 
-app.use("/images",express.static(path.join(__dirname,"images")))
+app.use("/images",express.static(path.join(__dirname,"images")));
 
 module.exports = app;
