@@ -38,6 +38,7 @@ const optimizeImage = async (req, res, next) => {
       .webp({ quality: 80 }) 
       .resize(400) 
       .toFile(optimizedImagePath); // Enregistrement de l'image optimisée
+      req.file.filename = optimizedImageName
 
     // Supprime l'image originale après optimisation.
     fs.unlink(originalImagePath, (error) => {
@@ -45,7 +46,6 @@ const optimizeImage = async (req, res, next) => {
         console.error("Impossible de supprimer l'image originale :", error);
         return next(error);
       }
-
       next();
     });
   } catch (error) {
